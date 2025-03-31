@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matias – CS Student based in Chile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #007AFF 0%, #00C7FF 100%);
+        --bio-gradient: linear-gradient(150deg, rgba(255,255,255,0.9) 0%, rgba(245,245,247,0.95) 100%);
+        --text-primary: #1D1D1F;
+        --text-secondary: #86868B;
+        --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #FBFBFD;
+        color: var(--text-primary);
+        line-height: 1.618;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .container {
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .bio-card {
+        background: var(--bio-gradient);
+        backdrop-filter: blur(30px);
+        border-radius: 32px;
+        padding: 4rem 3rem 3rem;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        margin-top: 80px;
+    }
+
+    .avatar-container {
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: white;
+        padding: 4px;
+        box-shadow: 0 8px 24px rgba(0, 122, 255, 0.1);
+    }
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+    }
+
+    .header-content {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        margin: 0 0 0.5rem;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        margin: 0;
+        letter-spacing: 0.02em;
+    }
+
+    .bio-content {
+        display: grid;
+        gap: 2rem;
+    }
+
+    .bio-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-primary);
+        text-align: justify;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .eco-section {
+        background: var(--primary-gradient);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 18px;
+        margin: 2rem auto;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        transition: transform 0.3s ease;
+        text-decoration: none;
+    }
+
+    .eco-section:hover {
+        transform: translateY(-2px);
+    }
+
+    .eco-icon {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 14px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .eco-icon i {
+        font-size: 1.4rem;
+    }
+
+    .eco-content {
+        flex: 1;
+    }
+
+    .eco-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0 0.4rem;
+    }
+
+    .eco-text {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        line-height: 1.5;
+    }
+
+    .eco-link {
+        color: white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .quote {
+        font-style: italic;
+        color: var(--text-secondary);
+        padding-left: 2rem;
+        border-left: 3px solid var(--primary-gradient);
+        margin: 2rem 0;
+        opacity: 0.9;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+    }
+
+    .social-link {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.03);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .social-link i {
+        font-size: 1.6rem;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+        transform: translateY(-3px);
+        background: var(--primary-gradient);
+    }
+
+    .social-link:hover i {
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem;
+        }
+
+        .bio-card {
+            padding: 3rem 2rem 2rem;
+            margin-top: 60px;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            top: -60px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+        }
+
+        .social-link i {
+            font-size: 1.4rem;
+        }
+
+        .eco-section {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        a{
+            text-decoration: none;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bio-card">
+
+            <div class="header-content">
+                <h1>Matias</h1>
+                <p class="subtitle">CS Student based in Chile</p>
+            </div>
+
+            <div class="bio-content">
+                <p class="bio-text">
+                    Welcome to my website. I’m a first-year computer science student with a love for technology, niche music, and RPG/strategy games. Also, I drink way too much tea.
+                </p>
+
+                <a href="https://ecologi.com/matias" class="eco-section" target="_blank">
+                    <div class="eco-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="eco-content">
+                        <h3 class="eco-title">I'm eco-friendly</h3>
+                        <p class="eco-text">Supporting environmental initiatives through Ecologi's climate action platform</p>
+                        <span class="eco-link">
+                            View Impact Profile <i class="fas fa-arrow-up-right-from-square"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <blockquote class="quote">
+                    You can’t buy happiness, but you can buy tea, and that’s kind of the same thing! ☕️️
+                </blockquote>
+
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://open.spotify.com/user/puftlzz9vhpmaew5u7ly3o2r0" class="social-link" target="_blank">
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
