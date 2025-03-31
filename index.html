@@ -25,6 +25,11 @@
         align-items: center;
         justify-content: center;
         padding: 2rem;
+
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
 
     .container {
@@ -286,5 +291,31 @@
             </div>
         </div>
     </div>
+    <script>
+    // Prevent right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Prevent copy/paste/cut actions
+    ['copy', 'cut', 'paste'].forEach(function(event) {
+        document.addEventListener(event, function(e) {
+            e.preventDefault();
+            // Optional: Show warning
+            alert('Content protection enabled - copying is disabled');
+        });
+    });
+
+    // Prevent text selection via keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        // Disable Ctrl+A/Ctrl+C/Ctrl+X
+        if ((e.ctrlKey || e.metaKey) && 
+            (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 88)) {
+            e.preventDefault();
+            alert('Content protection enabled - shortcuts disabled');
+        }
+    });
+    </script>
 </body>
 </html>
+
