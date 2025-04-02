@@ -12,6 +12,7 @@
         --text-primary: #1D1D1F;
         --text-secondary: #86868B;
         --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.08);
+        --accent: #FF375F;
     }
 
     body {
@@ -25,7 +26,7 @@
         align-items: center;
         justify-content: center;
         padding: 2rem;
-
+        
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -59,6 +60,11 @@
         background: white;
         padding: 4px;
         box-shadow: 0 8px 24px rgba(0, 122, 255, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .avatar-container:hover {
+        transform: translateX(-50%) scale(1.05);
     }
 
     .avatar {
@@ -72,6 +78,7 @@
     .header-content {
         text-align: center;
         margin-bottom: 2.5rem;
+        padding-top: 20px;
     }
 
     h1 {
@@ -105,74 +112,122 @@
         text-align: justify;
         max-width: 640px;
         margin: 0 auto;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
     }
 
-    .eco-section {
-        background: var(--primary-gradient);
-        color: white;
-        padding: 1.5rem;
-        border-radius: 18px;
-        margin: 2rem auto;
-        max-width: 600px;
+    /* Nueva sección de Intereses */
+    .interests-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+
+    .interest-item {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-        transition: transform 0.3s ease;
-        text-decoration: none;
-    }
-
-    .eco-section:hover {
-        transform: translateY(-2px);
-    }
-
-    .eco-icon {
-        background: rgba(255, 255, 255, 0.15);
+        gap: 0.8rem;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.03);
         border-radius: 14px;
-        padding: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .interest-item:hover {
+        transform: translateY(-3px);
+        background: var(--primary-gradient);
+        color: white;
+    }
+
+    .interest-icon {
+        width: 24px;
+        height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .eco-icon i {
-        font-size: 1.4rem;
+    /* Sección de Música */
+    .now-playing {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background: rgba(0, 0, 0, 0.03);
+        padding: 1.5rem;
+        border-radius: 18px;
+        margin: 1.5rem 0;
+        transition: transform 0.3s ease;
     }
 
-    .eco-content {
+    .now-playing:hover {
+        transform: translateY(-2px);
+    }
+
+    .album-art {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .song-info {
         flex: 1;
     }
 
-    .eco-title {
-        font-size: 1.1rem;
+    .song-title {
         font-weight: 600;
-        margin: 0 0 0.4rem;
+        margin: 0 0 0.25rem;
     }
 
-    .eco-text {
-        font-size: 0.95rem;
-        opacity: 0.9;
-        line-height: 1.5;
-    }
-
-    .eco-link {
-        color: white;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 0.8rem;
+    .song-artist {
+        color: var(--text-secondary);
         font-size: 0.9rem;
     }
 
-    .quote {
-        font-style: italic;
-        color: var(--text-secondary);
-        padding-left: 2rem;
-        border-left: 3px solid var(--primary-gradient);
-        margin: 2rem 0;
-        opacity: 0.9;
+    .play-button {
+        background: var(--primary-gradient);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s ease;
     }
 
+    .play-button:hover {
+        transform: scale(1.1);
+    }
+
+    /* Resto del CSS existente con ajustes */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Ajustes responsive */
+    @media (max-width: 768px) {
+        .interests-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .now-playing {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+    /* Social Icons Corregidos */
     .social-links {
         display: flex;
         justify-content: center;
@@ -205,45 +260,102 @@
     .social-link:hover i {
         color: white;
     }
+    /* No Gustos */
+.no-gustos {
+    background: rgba(0,0,0,0.03);
+    padding: 1.5rem;
+    border-radius: 18px;
+    margin: 1rem 0;
+}
 
-    @media (max-width: 768px) {
-        body {
-            padding: 1rem;
-        }
+.subtle-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
 
-        .bio-card {
-            padding: 3rem 2rem 2rem;
-            margin-top: 60px;
-        }
+.dislikes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
 
-        .avatar-container {
-            width: 120px;
-            height: 120px;
-            top: -60px;
-        }
+.dislikes-grid span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
 
-        h1 {
-            font-size: 2.4rem;
-        }
+.dislikes-grid i {
+    color: var(--accent);
+    font-size: 0.8rem;
+}
 
-        .social-link {
-            width: 48px;
-            height: 48px;
-        }
+/* Eco Badge */
+.eco-badge {
+    background: rgba(76, 175, 80, 0.1);
+    padding: 1rem;
+    border-radius: 14px;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
 
-        .social-link i {
-            font-size: 1.4rem;
-        }
+.eco-badge a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
 
-        .eco-section {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        a{
-            text-decoration: none;
-        }
-    }
+.eco-badge i {
+    color: #4CAF50;
+    margin-right: 0.5rem;
+}
+a{
+    text-decoration: none;
+}
+
+.eco-badge a {
+    background: #4CAF50;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+}
+.eco-badge a:hover::after {
+    width: 100%;
+}
+.spotify-wrapper {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 2rem 0;
+    background: var(--primary-gradient);
+}
+
+.spotify-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(0, 199, 255, 0.15) 100%);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+}
+
+.spotify-player {
+    position: relative;
+    width: 100%;
+    height: 152px;
+    border: none;
+    background: transparent;
+    z-index: 1;
+}
     </style>
 </head>
 <body>
@@ -252,70 +364,108 @@
 
             <div class="header-content">
                 <h1>Matias</h1>
-                <p class="subtitle">CS Student based in Chile</p>
+                <p class="subtitle">Estudiante de Informática en Chile</p>
             </div>
 
             <div class="bio-content">
                 <p class="bio-text">
-                    Welcome to my website. I’m a first-year computer science student with a love for technology, niche music, and RPG/strategy games. Also, I drink way too much tea.
+                   
+                Hola! Soy Matías, tengo 20 años y estoy en mi primer año en informática. Me gusta la tecnología, la música y el té.
+                
                 </p>
+                <p class="bio-text">Algunos cosas que me interesan:</p>
 
-                <a href="https://ecologi.com/matias" class="eco-section" target="_blank">
-                    <div class="eco-icon">
-                        <i class="fas fa-seedling"></i>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-heartbeat"></i>
                     </div>
-                    <div class="eco-content">
-                        <h3 class="eco-title">I'm eco-friendly</h3>
-                        <p class="eco-text">Supporting environmental initiatives through Ecologi's climate action platform</p>
-                        <span class="eco-link">
-                            View Impact Profile <i class="fas fa-arrow-up-right-from-square"></i>
-                        </span>
-                    </div>
-                </a>
-
-                <blockquote class="quote">
-                    You can’t buy happiness, but you can buy tea, and that’s kind of the same thing! ☕️️
-                </blockquote>
-
-                <div class="social-links">
-                    <a href="https://github.com/matias-damian" class="social-link" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="mailto:matias@matiasdamian.com" class="social-link" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://open.spotify.com/user/puftlzz9vhpmaew5u7ly3o2r0" class="social-link" target="_blank">
-                        <i class="fa-brands fa-spotify"></i>
-                    </a>
+                    <span>Comer sano</span>
                 </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <span>Tés especiales</span>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-headphones-alt"></i>
+                    </div>
+                    <span>Música de nicho</span>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <span>Videojuegos</span>
+                </div>
+            </div>
+
+          
+            <div class="no-gustos">
+                <p class="subtle-text">Prefiero evitar...</p>
+                <div class="dislikes-grid">
+                    <span><i class="fas fa-times-circle"></i> Juegos ultra difíciles</span>
+                    <span><i class="fas fa-times-circle"></i> Calor extremo</span>
+                    <span><i class="fas fa-times-circle"></i> Música genérica</span>
+                    <span><i class="fas fa-times-circle"></i> Café</span>
+                </div>
+            </div>
+
+        
+            <blockquote class="quote">
+                No se puede comprar la felicidad, pero sí puedes comprar té... 
+                que es, más o menos lo mismo! ☕️
+            </blockquote>
+
+            <div class="eco-badge">
+                <i class="fas fa-leaf"></i>
+                Apoyo iniciativas ecológicas a través de 
+                <a href="https://ecologi.com/matias" target="_blank">Ecologi</a>
+            </div>
+            <div class="social-links">
+                
+               <a href="https://github.com/matias-damian" class="social-link" target="_blank" title="Mis proyectos">
+        <i class="fa-brands fa-github"></i></a>
+                <a href="https://discord.com/users/1056752380126957669" class="social-link" target="_blank">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="https://open.spotify.com/user/puftlzz9vhpmaew5u7ly3o2r0" class="social-link" target="_blank">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
             </div>
         </div>
     </div>
+    </div>
+    
     <script>
-    // Prevent right-click context menu
-    document.addEventListener('contextmenu', function(e) {
+    // Animación de aparición escalonada para los elementos
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.interest-item, .now-playing');
+        animatedElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 150);
+        });
+    });
+     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
-
-    // Prevent copy/paste/cut actions
     ['copy', 'cut', 'paste'].forEach(function(event) {
         document.addEventListener(event, function(e) {
             e.preventDefault();
-            // Optional: Show warning
-            alert('Content protection enabled - copying is disabled');
         });
     });
-
-    // Prevent text selection via keyboard shortcuts
     document.addEventListener('keydown', function(e) {
-        // Disable Ctrl+A/Ctrl+C/Ctrl+X
+        //Ctrl+A/Ctrl+C/Ctrl+X
         if ((e.ctrlKey || e.metaKey) && 
             (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 88)) {
             e.preventDefault();
-            alert('Content protection enabled - shortcuts disabled');
         }
     });
+ 
     </script>
 </body>
 </html>
-
