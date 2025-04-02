@@ -6,6 +6,12 @@
     <title>Matias – CS Student based in Chile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
     :root {
         --primary-gradient: linear-gradient(135deg, #007AFF 0%, #00C7FF 100%);
         --bio-gradient: linear-gradient(150deg, rgba(255,255,255,0.9) 0%, rgba(245,245,247,0.95) 100%);
@@ -16,7 +22,6 @@
     }
 
     body {
-        margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         background: #FBFBFD;
         color: var(--text-primary);
@@ -26,16 +31,13 @@
         align-items: center;
         justify-content: center;
         padding: 2rem;
-        
         user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
     }
 
     .container {
         max-width: 800px;
         width: 100%;
+        margin: 0 auto;
     }
 
     .bio-card {
@@ -46,12 +48,12 @@
         box-shadow: var(--shadow-soft);
         border: 1px solid rgba(255, 255, 255, 0.8);
         position: relative;
-        margin-top: 80px;
+        margin-top: 100px;
     }
 
     .avatar-container {
         position: absolute;
-        top: -80px;
+        top: -100px;
         left: 50%;
         transform: translateX(-50%);
         width: 160px;
@@ -82,7 +84,7 @@
     }
 
     h1 {
-        font-size: 3.2rem;
+        font-size: 3rem;
         font-weight: 800;
         letter-spacing: -0.025em;
         margin: 0 0 0.5rem;
@@ -90,6 +92,7 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        line-height: 1.1;
     }
 
     .subtitle {
@@ -114,13 +117,13 @@
         margin: 0 auto;
         opacity: 0;
         animation: fadeInUp 0.8s ease forwards;
+        hyphens: auto;
     }
 
-    /* Nueva sección de Intereses */
     .interests-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.5rem;
         margin: 2rem 0;
     }
 
@@ -128,10 +131,11 @@
         display: flex;
         align-items: center;
         gap: 0.8rem;
-        padding: 1rem;
+        padding: 1.2rem;
         background: rgba(0, 0, 0, 0.03);
-        border-radius: 14px;
+        border-radius: 16px;
         transition: all 0.3s ease;
+        font-size: 1rem;
     }
 
     .interest-item:hover {
@@ -148,97 +152,68 @@
         justify-content: center;
     }
 
-    /* Sección de Música */
-    .now-playing {
+    .no-gustos {
+        background: rgba(0,0,0,0.03);
+        padding: 2rem;
+        border-radius: 24px;
+        margin: 2rem 0;
+    }
+
+    .subtle-text {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .dislikes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .dislikes-grid span {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-        background: rgba(0, 0, 0, 0.03);
-        padding: 1.5rem;
-        border-radius: 18px;
-        margin: 1.5rem 0;
-        transition: transform 0.3s ease;
-    }
-
-    .now-playing:hover {
-        transform: translateY(-2px);
-    }
-
-    .album-art {
-        width: 60px;
-        height: 60px;
-        border-radius: 12px;
-        object-fit: cover;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    .song-info {
-        flex: 1;
-    }
-
-    .song-title {
-        font-weight: 600;
-        margin: 0 0 0.25rem;
-    }
-
-    .song-artist {
+        gap: 0.8rem;
         color: var(--text-secondary);
+        font-size: 0.95rem;
+    }
+
+    .dislikes-grid i {
+        color: var(--accent);
         font-size: 0.9rem;
     }
 
-    .play-button {
-        background: var(--primary-gradient);
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.3s ease;
+    .eco-badge {
+        background: rgba(76, 175, 80, 0.1);
+        padding: 1.5rem;
+        border-radius: 16px;
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 1rem;
     }
 
-    .play-button:hover {
-        transform: scale(1.1);
+    .eco-badge a {
+        background: #4CAF50;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
     }
 
-    /* Resto del CSS existente con ajustes */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Ajustes responsive */
-    @media (max-width: 768px) {
-        .interests-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .now-playing {
-            flex-direction: column;
-            text-align: center;
-        }
-    }
-    /* Social Icons Corregidos */
     .social-links {
         display: flex;
         justify-content: center;
-        gap: 1.5rem;
-        margin-top: 2.5rem;
+        gap: 2rem;
+        margin-top: 3rem;
     }
 
     .social-link {
-        width: 56px;
-        height: 56px;
-        border-radius: 16px;
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -247,7 +222,7 @@
     }
 
     .social-link i {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         color: var(--text-primary);
         transition: color 0.3s ease;
     }
@@ -260,102 +235,110 @@
     .social-link:hover i {
         color: white;
     }
-    /* No Gustos */
-.no-gustos {
-    background: rgba(0,0,0,0.03);
-    padding: 1.5rem;
-    border-radius: 18px;
-    margin: 1rem 0;
-}
 
-.subtle-text {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-}
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-.dislikes-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-}
+    @media (max-width: 768px) {
+        body {
+            padding: 1.5rem;
+        }
 
-.dislikes-grid span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
+        .bio-card {
+            padding: 4rem 2rem 2rem;
+            margin-top: 80px;
+            border-radius: 28px;
+        }
 
-.dislikes-grid i {
-    color: var(--accent);
-    font-size: 0.8rem;
-}
+        .avatar-container {
+            width: 140px;
+            height: 140px;
+            top: -70px;
+        }
 
-/* Eco Badge */
-.eco-badge {
-    background: rgba(76, 175, 80, 0.1);
-    padding: 1rem;
-    border-radius: 14px;
-    text-align: center;
-    margin: 1.5rem 0;
-    font-size: 0.9rem;
-}
+        h1 {
+            font-size: 2.2rem;
+        }
 
-.eco-badge a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-}
+        .subtitle {
+            font-size: 1.1rem;
+        }
 
-.eco-badge i {
-    color: #4CAF50;
-    margin-right: 0.5rem;
-}
-a{
-    text-decoration: none;
-}
+        .bio-text {
+            font-size: 1rem;
+            text-align: left;
+        }
 
-.eco-badge a {
-    background: #4CAF50;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 500;
-    text-decoration: none;
-    position: relative;
-}
-.eco-badge a:hover::after {
-    width: 100%;
-}
-.spotify-wrapper {
-    position: relative;
-    border-radius: 18px;
-    overflow: hidden;
-    margin: 2rem 0;
-    background: var(--primary-gradient);
-}
+        .interests-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
 
-.spotify-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(0, 199, 255, 0.15) 100%);
-    backdrop-filter: blur(8px);
-    pointer-events: none;
-}
+        .dislikes-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
 
-.spotify-player {
-    position: relative;
-    width: 100%;
-    height: 152px;
-    border: none;
-    background: transparent;
-    z-index: 1;
-}
+        .no-gustos {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            width: 54px;
+            height: 54px;
+        }
+
+        .social-link i {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 1rem;
+        }
+
+        .bio-card {
+            padding: 3.5rem 1.5rem 1.5rem;
+            border-radius: 24px;
+            margin-top: 70px;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            top: -60px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+        }
+
+        .interests-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .interest-item {
+            padding: 1rem;
+        }
+
+        .social-links {
+            gap: 1.5rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -369,80 +352,78 @@ a{
 
             <div class="bio-content">
                 <p class="bio-text">
-                   
-                Hola! Soy Matías, tengo 20 años y estoy en mi primer año en informática. Me gusta la tecnología, la música y el té.
-                
+                          ¡Hola! Soy Matías, tengo 20 años y actualmente estoy en mi primer año de informática. Desde que era pequeño, la tecnología siempre me fascinó, que a los 11 años ya estaba programando. Con el tiempo, me di cuenta de que quería ir más allá de solo programar, así que decidí estudiar informática para profundizar mis conocimientos.</p>
+                    <p class="bio-text">Más alla de eso, soy un poco nerd en mis gustos. Me gustan ciertos videojuegos y tengo una debilidad por la música, aunque mis intereses tienden a ser un poco fuera de lo común. Tengo algunas frases que me guían en la vida como <i>"hacer las cosas con calma"</i> y <i>"todo es por algo"</i>, que reflejan un poco cómo soy.</p>
+                    <p class="bio-text">
+También me gusta comer sano y soy un verdadero fanático del té. Si alguna vez vienes a mi casa, seguro te sorprenderá mi senda colección de tés.
                 </p>
-                <p class="bio-text">Algunos cosas que me interesan:</p>
 
-            <div class="interests-grid">
-                <div class="interest-item">
-                    <div class="interest-icon">
-                        <i class="fas fa-heartbeat"></i>
+                <div class="interests-grid">
+                    <div class="interest-item">
+                        <div class="interest-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <span>Comer sano</span>
                     </div>
-                    <span>Comer sano</span>
-                </div>
-                <div class="interest-item">
-                    <div class="interest-icon">
-                        <i class="fas fa-mug-hot"></i>
+                    <div class="interest-item">
+                        <div class="interest-icon">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+                        <span>Tés especiales</span>
                     </div>
-                    <span>Tés especiales</span>
-                </div>
-                <div class="interest-item">
-                    <div class="interest-icon">
-                        <i class="fas fa-headphones-alt"></i>
+                    <div class="interest-item">
+                        <div class="interest-icon">
+                            <i class="fas fa-headphones-alt"></i>
+                        </div>
+                        <span>Música de nicho</span>
                     </div>
-                    <span>Música de nicho</span>
-                </div>
-                <div class="interest-item">
-                    <div class="interest-icon">
-                        <i class="fas fa-dice"></i>
+                    <div class="interest-item">
+                        <div class="interest-icon">
+                            <i class="fas fa-dice"></i>
+                        </div>
+                        <span>Videojuegos</span>
                     </div>
-                    <span>Videojuegos</span>
                 </div>
-            </div>
 
-          
-            <div class="no-gustos">
-                <p class="subtle-text">Prefiero evitar...</p>
-                <div class="dislikes-grid">
-                    <span><i class="fas fa-times-circle"></i> Juegos ultra difíciles</span>
-                    <span><i class="fas fa-times-circle"></i> Calor extremo</span>
-                    <span><i class="fas fa-times-circle"></i> Música genérica</span>
-                    <span><i class="fas fa-times-circle"></i> Café</span>
+                <div class="no-gustos">
+                    <p class="subtle-text">Prefiero evitar...</p>
+                    <div class="dislikes-grid">
+                        <span><i class="fas fa-times-circle"></i> Juegos ultra difíciles</span>
+                        <span><i class="fas fa-times-circle"></i> Calor extremo</span>
+                        <span><i class="fas fa-times-circle"></i> Música genérica</span>
+                        <span><i class="fas fa-times-circle"></i> Café</span>
+                    </div>
                 </div>
-            </div>
 
-        
-            <blockquote class="quote">
-                No se puede comprar la felicidad, pero sí puedes comprar té... 
-                que es, más o menos lo mismo! ☕️
-            </blockquote>
+                <blockquote class="bio-text">
+                    No se puede comprar la felicidad, pero sí puedes comprar té... 
+                    que es, más o menos lo mismo! ☕️
+                </blockquote>
 
-            <div class="eco-badge">
-                <i class="fas fa-leaf"></i>
-                Apoyo iniciativas ecológicas a través de 
-                <a href="https://ecologi.com/matias" target="_blank">Ecologi</a>
-            </div>
-            <div class="social-links">
-                
-               <a href="https://github.com/matias-damian" class="social-link" target="_blank" title="Mis proyectos">
-        <i class="fa-brands fa-github"></i></a>
-                <a href="https://discord.com/users/1056752380126957669" class="social-link" target="_blank">
-                    <i class="fa-brands fa-discord"></i>
-                </a>
-                <a href="https://open.spotify.com/user/puftlzz9vhpmaew5u7ly3o2r0" class="social-link" target="_blank">
-                    <i class="fa-brands fa-spotify"></i>
-                </a>
+                <div class="eco-badge">
+                    <i class="fas fa-leaf"></i>
+                    Apoyo iniciativas ecológicas a través de 
+                    <a href="https://ecologi.com/matias" target="_blank">Ecologi</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/matias-damian" class="social-link" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://discord.com/users/1056752380126957669" class="social-link" target="_blank">
+                        <i class="fa-brands fa-discord"></i>
+                    </a>
+                    <a href="https://open.spotify.com/user/puftlzz9vhpmaew5u7ly3o2r0" class="social-link" target="_blank">
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-    
+
     <script>
-    // Animación de aparición escalonada para los elementos
     document.addEventListener('DOMContentLoaded', function() {
-        const animatedElements = document.querySelectorAll('.interest-item, .now-playing');
+        const animatedElements = document.querySelectorAll('.interest-item, .bio-text');
         animatedElements.forEach((el, index) => {
             setTimeout(() => {
                 el.style.opacity = '1';
@@ -450,22 +431,24 @@ a{
             }, index * 150);
         });
     });
-     document.addEventListener('contextmenu', function(e) {
+
+    // Security features
+    document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
+
     ['copy', 'cut', 'paste'].forEach(function(event) {
         document.addEventListener(event, function(e) {
             e.preventDefault();
         });
     });
+
     document.addEventListener('keydown', function(e) {
-        //Ctrl+A/Ctrl+C/Ctrl+X
         if ((e.ctrlKey || e.metaKey) && 
             (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 88)) {
             e.preventDefault();
         }
     });
- 
     </script>
 </body>
 </html>
