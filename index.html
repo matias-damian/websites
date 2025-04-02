@@ -117,7 +117,8 @@
         margin: 0 auto;
         opacity: 0;
         animation: fadeInUp 0.8s ease forwards;
-        hyphens: auto;
+        hyphens: auto
+        word-wrap: break-word;
     }
 
     .interests-grid {
@@ -272,10 +273,6 @@
             font-size: 1.1rem;
         }
 
-        .bio-text {
-            font-size: 1rem;
-            text-align: left;
-        }
 
         .interests-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -371,6 +368,41 @@
 a{
     text-decoration: none;
 }
+.bio-quote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.bio-quote::before, .bio-quote::after {
+    font-size: 3rem;
+    position: absolute;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bio-quote::before {
+    content: "“";
+    left: -10px;
+    top: -10px;
+}
+
+.bio-quote::after {
+    content: "”";
+    right: -10px;
+    bottom: -10px;
+}
     </style>
 </head>
 <body>
@@ -382,34 +414,37 @@ a{
             </div>
 
             <div class="bio-content">
-               <p class="bio-text">Hola. Mi nombre es Matías, tengo 20 años y actualmente estudio informática. Me gusta mucho el <text class="blue-gradient">té...</text>
-               </p>
-                <p class="bio-text">Siempre explorando nuevos intereses y buscando lo que despierte mi curiosidad.</p>
+               <p class="bio-text">
+    Hola, soy <span class="blue-gradient">Matías</span>. Tengo 20 años y estudio <span class="blue-gradient">Ingeniería Informática</span>. Siempre me ha fascinado la tecnología desde pequeño, experimentar con software y descubrir cómo funcionan las cosas. También me gusta el té, tal vez demasiado.
+</p>
+<p class="bio-text">
+    Me gusta explorar nuevos intereses, disfrutar de la música y perderme en videojuegos que desafían la mente. Siempre estoy aprendiendo algo nuevo.
+</p>
                   <h2 class="section-title">Me gusta...</h2><div class="interests-grid">
                   
                     <div class="interest-item">
                         <div class="interest-icon">
-                            <i class="fas fa-heartbeat"></i>
+                            <i class="fas fa-tv"></i>
                         </div>
-                        <span>Vida sana</span>
+                        <span>Ver series</span>
                     </div>
                     <div class="interest-item">
                         <div class="interest-icon">
                             <i class="fas fa-mug-hot"></i>
                         </div>
-                        <span>Té</span>
+                        <span>El té</span>
                     </div>
                     <div class="interest-item">
                         <div class="interest-icon">
                             <i class="fas fa-headphones-alt"></i>
                         </div>
-                        <span>Música de nicho</span>
+                        <span>Escuchar música</span>
                     </div>
                     <div class="interest-item">
                         <div class="interest-icon">
                             <i class="fas fa-dice"></i>
                         </div>
-                        <span>Videojuegos</span>
+                        <span>Jugar videojuegos</span>
                     </div>
                 </div>
 <div class="spotify-section">
@@ -435,19 +470,13 @@ a{
                     </div>
                 </div>
 
-                <blockquote class="bio-text">
-                    No se puede comprar la felicidad, pero sí puedes comprar té… ¡y eso es casi lo mismo! ☕️
+                <p class="bio-quote">
+                    No se puede comprar la felicidad, pero sí una buena taza de té… y eso es más o menos lo mismo. ☕️
                 </blockquote>
 
-                <div class="eco-badge">
-                    <i class="fas fa-leaf"></i>
-                    Apoyo iniciativas ecológicas a través de 
-                    <a href="https://ecologi.com/matias" target="_blank">Ecologi</a>
-                </div>
-
                 <div class="social-links">
-                    <a href="https://github.com/matias-damian" class="social-link" target="_blank">
-                        <i class="fa-brands fa-github"></i>
+                    <a href="https://ecologi.com/matias" class="social-link" target="_blank">
+                        <i class="fas fa-leaf"></i>
                     </a>
                     <a href="https://discord.com/users/1056752380126957669" class="social-link" target="_blank">
                         <i class="fa-brands fa-discord"></i>
