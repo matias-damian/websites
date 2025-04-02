@@ -339,6 +339,35 @@
             gap: 1.5rem;
         }
     }
+    .blue-gradient {
+    font-weight: bold;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.spotify-section {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.spotify-section .subtle-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.spotify-embed {
+    margin-top: 1rem;
+}
+
+.spotify-embed iframe {
+    border-radius: 8px;
+}
     </style>
 </head>
 <body>
@@ -351,14 +380,18 @@
             </div>
 
             <div class="bio-content">
-                <p class="bio-text">
-                          ¡Hola! Soy Matías, tengo 20 años y actualmente estoy en mi primer año de informática. Desde que era pequeño, la tecnología siempre me fascinó, que a los 11 años ya estaba programando. Con el tiempo, me di cuenta de que quería ir más allá de solo programar, así que decidí estudiar informática para profundizar mis conocimientos.</p>
-                    <p class="bio-text">Más alla de eso, soy un poco nerd en mis gustos. Me gustan ciertos videojuegos y tengo una debilidad por la música, aunque mis intereses tienden a ser un poco fuera de lo común. Tengo algunas frases que me guían en la vida como <i>"hacer las cosas con calma"</i> y <i>"todo es por algo"</i>, que reflejan un poco cómo soy.</p>
-                    <p class="bio-text">
-También me gusta comer sano y soy un verdadero fanático del té. Si alguna vez vienes a mi casa, seguro te sorprenderá mi senda colección de tés.
-                </p>
+               <p class="bio-text">
+    ¡Hola! Soy Matías, tengo 20 años y actualmente estoy en mi primer año de informática. Desde que era pequeño, la tecnología siempre me fascinó, que a los 11 años ya estaba programando. Con el tiempo, me di cuenta de que quería ir más allá de solo programar, así que decidí estudiar informática para profundizar mis conocimientos.
+</p>
+<p class="bio-text">
+    Más allá de eso, soy un poco nerd en mis gustos. Me gustan ciertos videojuegos y tengo una debilidad por la música, aunque mis intereses tienden a ser un poco fuera de lo común. Tengo algunas frases que me guían en la vida como <i class="blue-gradient">"hacer las cosas con calma"</i> y <i class="blue-gradient">"todo es por algo"</i>, que reflejan un poco cómo soy.
+</p>
+<p class="bio-text">
+    También me gusta comer sano y soy un verdadero fanático del té. Si alguna vez vienes a mi casa, seguro te sorprenderá mi colección de tés.
+</p>
 
                 <div class="interests-grid">
+                    <h2 class="section-title">Me gusta...</h2><br />
                     <div class="interest-item">
                         <div class="interest-icon">
                             <i class="fas fa-heartbeat"></i>
@@ -384,9 +417,8 @@ También me gusta comer sano y soy un verdadero fanático del té. Si alguna vez
                         <span>Videojuegos</span>
                     </div>
                 </div>
-
                 <div class="no-gustos">
-                    <p class="subtle-text">Prefiero evitar...</p>
+                    <h2 class="section-title">Prefiero evitar...</h2><br />
                     <div class="dislikes-grid">
                         <span><i class="fas fa-times-circle"></i> Juegos ultra difíciles</span>
                         <span><i class="fas fa-times-circle"></i> Calor extremo</span>
